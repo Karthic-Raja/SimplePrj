@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bus Booking</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: calc(100% - 12px);
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Bus Booking</h2>
+  <form id="bookingForm">
+    <label for="from">From:</label>
+    <input type="text" id="from" name="from" required>
+
+    <label for="to">To:</label>
+    <input type="text" id="to" name="to" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="seats">Number of Seats:</label>
+    <select id="seats" name="seats" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+
+    <button type="button" onclick="bookBus()">Book Now</button>
+  </form>
+
+  <div id="result" class="result" style="display: none;"></div>
+</div>
+
+<script>
+function bookBus() {
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+  const date = document.getElementById("date").value;
+  const seats = document.getElementById("seats").value;
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = `
+    <h3>Booking Details:</h3>
+    <p><strong>From:</strong> ${from}</p>
+    <p><strong>To:</strong> ${to}</p>
+    <p><strong>Date:</strong> ${date}</p>
+    <p><strong>Seats:</strong> ${seats}</p>
+    <p><strong>Status:</strong> Booking Confirmed!</p>
+  `;
+  resultDiv.style.display = "block";
+}
+</script>
+
+</body>
+</html>
